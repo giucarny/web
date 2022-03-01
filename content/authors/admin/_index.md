@@ -3,25 +3,25 @@ bio: My research interests include distributed robotics, mobile computing and pr
   matter.
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: PhD in Political Studies
+    institution: University of Milan
+    year: 2021
+  - course: MA in Science of Government and Public Communication
+    institution: LUISS Guido Carli University, Rome
+    year: 2015
+  - course: BA in Political and Communication Science
+    institution: LUISS Guido Carli University, Rome
+    year: 2011
 email: ""
 highlight_name: true
 interests:
-- Political Behaviour
 - Political Attitudes
+- Electoral Behaviour
 - Data Analysis
 - Quantitative Methods
 organizations:
-- name: Mannheimer Zentrum für Europäische Sozialforschung, Universität Mannheim
-  url: https://www.mzes.uni-mannheim.de/d7/en
+- name: University of Mannheim
+  url: https://www.uni-mannheim.de/
 role: Post-doctoral Researcher
 social:
 - icon: envelope
@@ -46,8 +46,7 @@ superuser: true
 title: Giuseppe Carteny
 ---
 
-Alice Bighetti is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Hi! I am a political science researcher at the [Mannheim Centre for European Social Research (MZES)](https://www.mzes.uni-mannheim.de/d7/en) focusing on the empirical study of political attitudes and electoral behaviour in Europe and East Asia. 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
