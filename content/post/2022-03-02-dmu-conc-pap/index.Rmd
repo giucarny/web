@@ -2,7 +2,7 @@
 title: DMU Concept Paper
 author: ''
 date: '2022-03-01'
-slug: hi-hugo
+slug: dmu-concept-papers
 categories: []
 tags: []
 subtitle: ''
@@ -22,6 +22,7 @@ projects: []
 At the core of the services that I would be keen to offer as a member of the Data and Methods Unit (DMU) would be the support of scholars in designing, collecting, processing, and analysing  survey data. Services would first aim to offer advice concerning survey ethical issues concerning survey methods (such as, informed consent, respondents’ rights, researchers’ social responsibilities). Other basic services would refer to choices concerning survey methods (for instance, cross-sectional, panel, factorial, network, and their possible combinations) and data collection modes (face to face, telephone, online, mail, or combination of said methods). Then, support would be dedicated at striking a balance between the multiple dimensions characterising survey-based research (such as relevance, accuracy, interpretability, but also cost-efficiency, comparability, timeliness, accessibility). In this context, a key service to be offered would be counselling and supporting decisions about the multiple trade-offs between said dimensions (e.g., relevance vs accuracy, or comparability vs accuracy). An additional service would be support for coping with the main sources of systematic error/bias of survey-based research. Particular attention would be dedicated to minimising the most common sources of representation error (coverage, sampling, and nonresponse), and eventually identify the best trade-offs between different sources of error (e.g., between coverage and nonresponse). Additional efforts would be dedicated to reducing measurement errors, from concerns about measurement validity to processing errors, and support might be offered for  developing survey weights with post-stratification routines. Finally, support would be dedicated to evaluating the relationship between the survey data at hand (for instance, observational data based on random or nonrandom samples) and possible inference frameworks (for instance, model-based or design-based). 
 Additional services might be dedicated to the development of efficient and effective data management strategies. Support and advice about data management might also refer to tools for developing efficient, manageable, and effective collaborative projects (e.g., the use of version control systems and related best practices). Best practices concerning data wrangling, and merging with additional data sources, as well as advice about alternative analytical methods for the data at hand, might also be additional services that I would be happy to offer if requested.
 Finally, other services that I might provide to the DMU would be collaborating in the management and/or content creation for the Method Bites blog, as well as development of events sponsored by the DMU and related labs of the MZES.
+
 
 # Research
 
