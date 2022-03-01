@@ -31,18 +31,18 @@ social:
   icon: twitter
   icon_pack: fab
   label: Follow me on Twitter
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/GiuseppeCarteny
 - icon: graduation-cap
   icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.com/citations?user=TlJ3O9oAAAAJ&hl=en&oi=sra
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/giucarny/
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/
+  link: https://www.linkedin.com/in/giuseppe-carteny-8676121b6/
 superuser: true
-title: Alice Bighetti (吳恩達)
+title: Giuseppe Carteny
 ---
 
 Alice Bighetti is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
