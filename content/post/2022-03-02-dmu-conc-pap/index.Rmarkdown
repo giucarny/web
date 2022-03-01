@@ -1,11 +1,11 @@
 ---
 title: DMU Concept Paper
-subtitle: 'MZES Data and Methods Unit Application'
-author: Giuseppe Carteny
-date: '2022-03-02'
-slug: dmu-conc-pap
+author: ''
+date: '2022-03-01'
+slug: hi-hugo
 categories: []
 tags: []
+subtitle: ''
 summary: ''
 authors: []
 lastmod: '2022-03-02T00:27:47+01:00'
