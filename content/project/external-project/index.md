@@ -1,5 +1,5 @@
 ---
-date: "2021-03-01T00:00:00Z"
+date: "2022-03-01T00:00:00Z"
 external_link: https://www.mzes.uni-mannheim.de/proconeu/
 image:
   caption: Photo by Toa Heftiba on Unsplash
@@ -12,5 +12,5 @@ tags:
 - Political Communication
 - European Integration
 - ProConEU
-title: External Project
+title: ProConEU
 ---
