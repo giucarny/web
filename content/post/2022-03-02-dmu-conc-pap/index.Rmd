@@ -1,11 +1,11 @@
 ---
-title: DMU Concept Paper
+title: Concept Paper
 author: ''
 date: '2022-03-01'
 slug: dmu-concept-papers
 categories: []
 tags: []
-subtitle: ''
+subtitle: 'MZES Data and Methods Unit Application'
 summary: ''
 authors: []
 lastmod: '2022-03-02T00:27:47+01:00'
