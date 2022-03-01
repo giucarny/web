@@ -1,6 +1,5 @@
 ---
-bio: My research interests include distributed robotics, mobile computing and programmable
-  matter.
+bio: Political attitudes and electoral behaviour researcher.
 education:
   courses:
   - course: PhD in Political Studies
@@ -22,7 +21,7 @@ interests:
 organizations:
 - name: University of Mannheim
   url: https://www.uni-mannheim.de/
-role: Post-doctoral Researcher
+role: Postdoctoral Fellow
 social:
 - icon: envelope
   icon_pack: fas
