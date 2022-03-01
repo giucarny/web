@@ -15,13 +15,14 @@ education:
 email: ""
 highlight_name: true
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Political Behaviour
+- Political Attitudes
+- Data Analysis
+- Quantitative Methods
 organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
-role: Professor of Artificial Intelligence
+- name: Mannheimer Zentrum für Europäische Sozialforschung, Universität Mannheim
+  url: https://www.mzes.uni-mannheim.de/d7/en
+role: Post-doctoral Researcher
 social:
 - icon: envelope
   icon_pack: fas
