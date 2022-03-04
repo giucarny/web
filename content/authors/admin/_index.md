@@ -48,4 +48,4 @@ title: Giuseppe Carteny
 Hi! I am a political science researcher at the [Mannheim Centre for European Social Research (MZES)](https://www.mzes.uni-mannheim.de/d7/en) focusing on the empirical study of political attitudes and electoral behaviour in Europe and East Asia. 
 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/G.Carteny_CV.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/G.Carteny_CV.pdf" "newtab" >}}CV{{< /staticref >}}.
