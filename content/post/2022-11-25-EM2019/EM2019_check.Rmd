@@ -434,13 +434,26 @@ df %>%
 <br/><br/>
 
 
-# EU Institutions competences {.tabset}
+
+# Minor issues {.tabset}
+
+## Country labels
+
+The labels for NL and UK differ from those on the EES. We might change them. 
+
+- Euromanifesto: "Czech Republic", "The Netherlands", "UK";
+- EES voter study: "Czech Rep.", "Netherlands", "United Kingdom".
 
 
-According to the EMCS, the level for the following items is only the second one (EU level), and indeed 
-2019 EM data do include only the variables for this level. 
-Nonetheless, despite a similar coding scheme with 2019, the 2014 Euromanifesto data *do include* the 
-other two levels (1 and 3), as shown in the following tabs. 
+<br/><br/>
+
+
+## EU Institutions competences {.tabset}
+
+According to the latest EMCS, the level for the fourth domain ("Political System of the European Union") items 
+is only the second one (EU level), and indeed 2019 EM data do include only the variables for this level. 
+Nonetheless, despite a coding scheme similar to 2019, the 2014 Euromanifesto data *do include* the 
+other two levels (1 and 3), as shown in the following tabs.  
 Now the question is: Are we going to update the 2014 EM dataset? Or are we going to ignore this 
 inconsistency?
 
@@ -448,7 +461,7 @@ inconsistency?
 <br/><br/>
 
 
-## EP 
+### EP 
 
 
 2014:
@@ -486,7 +499,7 @@ df %>%
 ```
 
 
-## EU Commission 
+### EU Commission 
 
 
 2014:
@@ -524,7 +537,7 @@ df %>%
 ```
 
  
-## European Council 
+### European Council 
 
 2014:
 ```{r COUNCcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
@@ -561,7 +574,7 @@ df %>%
 ```
 
  
-## Voting procedures Council 
+### Voting procedures Council 
 
 2014:
 ```{r COUNCVOTEcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
@@ -598,7 +611,7 @@ df %>%
 ```
 
  
-## EU court of justice
+### EU court of justice
 
 2014:
 ```{r ECJcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
@@ -634,7 +647,7 @@ df %>%
 ```
 
  
-## EU competences in general
+### EU competences in general
 
 2014:
 ```{r EUcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
@@ -670,23 +683,5 @@ df %>%
 ```
 
  
-
-
-
-# Minor issues {.tabset}
-
-## Country labels
-
-
-The labels for NL and UK differ from those on the EES. We might change them. 
-
-- Euromanifesto: "Czech Republic", "The Netherlands", "UK";
-- EES voter study: "Czech Rep.", "Netherlands", "United Kingdom".
-
-
-<br/><br/>
-<br/><br/>
-<br/><br/>
-
 
 
