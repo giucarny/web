@@ -1,0 +1,692 @@
+---
+title: "EM 2019 Check"
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+author: 'Giuseppe Carteny'
+always_allow_html: true
+slug: em19-check
+output: 
+  html_document: 
+    toc: true
+date: "2022-11-25"
+lastmod: '2022-11-25T16:52:08+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r admin, echo=FALSE, warning=FALSE, message=FALSE, results='hide', include=FALSE, eval=TRUE}
+
+# ADMIN #===============================================================================================
+
+want = c("tidyverse",  "gridExtra", "magrittr", "haven", "data.table", "labelled", "here", "kableExtra")
+
+have = want %in% rownames(installed.packages())
+if ( any(!have) ) { install.packages( want[!have] ) }
+junk <- lapply(want, library, character.only = TRUE)
+rm(have,want,junk)
+
+options(scipen = 99)
+rm(list = ls())
+
+
+# Load Euromanifesto data # ============================================================================
+
+euroman.fls <- 
+  list.files(here('content', 'post', '2022-11-25-EM2019','data'), pattern = 'Euromanifesto.dta') %>% 
+  paste0(here('content', 'post', '2022-11-25-EM2019','data'), '/', .)
+
+euroman.dfs <- lapply(euroman.fls, read_dta)
+
+
+```
+
+<br/><br/>
+
+# Party codes {.tabset}
+
+Czech Republic, Finland, Romania, Slovakia, and Sweden party codes include inconsistencies 
+to be corrected.  
+France, Germany, and Greece include cases that we might change, but they do not present
+any relevant inconsistency. 
+
+<br/>
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+## Czech Republic 
+
+The Tradition, Responsibility, Prosperity 09 (TOP 09) EES code is set as missing (-777), but actually 
+the 2019 EES voter study code for this party is 1203530. 
+
+```{r Cze2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  left_join(
+    .,
+    tibble(
+      country     = .$country %>% val_labels %>% as.numeric,
+      countryname = .$country %>% val_labels %>% attr(., 'names') %>% trimws
+    ),
+    by = c('country')
+  ) %>% 
+  mutate(
+    countryname = case_when(
+      countryname == 'Czech Republic'  ~ 'Czech Rep.',
+      countryname == 'UK'              ~ 'United Kingdom',
+      countryname == 'The Netherlands' ~ 'Netherlands',
+      T                                ~ countryname
+    )
+  ) %>% 
+  filter(countryname=='Czech Rep.') %>% 
+  distinct %>% 
+  dplyr::select(partyname, emcs, ees) %>% 
+  as_tibble
+
+
+df$ees <- 
+  cell_spec(
+    df$ees,
+    popover = spec_popover(
+      content = c(rep('',7), 'this should be 1203530', ''),
+      title = NULL, 
+      position = 'right'
+    )
+  )
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#65788c", background = "#d2d4d6") %>% 
+  row_spec(8, bold = T, color = "white", background = "#65788c")
+
+```
+
+<br/><br/>
+
+## Finland 
+
+The swedish people's party ees code is set as missing (-777), but actually the 2019 EES voter study code 
+for this party is 1246901. 
+
+```{r Fin2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  left_join(
+    .,
+    tibble(
+      country     = .$country %>% val_labels %>% as.numeric,
+      countryname = .$country %>% val_labels %>% attr(., 'names') %>% trimws
+    ),
+    by = c('country')
+  ) %>% 
+  filter(countryname=='Finland') %>% 
+  distinct %>% 
+  dplyr::select(partyname, emcs, ees) %>% 
+  as_tibble 
+
+df$ees <- 
+  cell_spec(
+    df$ees,
+    popover = spec_popover(
+      content = c(rep('',6), 'this should be 1246901'),
+      title = NULL, 
+      position = 'right'
+    )
+  )
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#65788c", background = "#d2d4d6") %>% 
+  row_spec(7, bold = T, color = "white", background = "#65788c")
+
+```
+
+
+<br/><br/>
+
+## Romania
+
+The USR - PLUS alliance 2019 EES code (1642402) seems to be wrong. In the EES the code for this alliance 
+is actually 1642001. 
+
+
+```{r Rom2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  left_join(
+    .,
+    tibble(
+      country     = .$country %>% val_labels %>% as.numeric,
+      countryname = .$country %>% val_labels %>% attr(., 'names') %>% trimws
+    ),
+    by = c('country')
+  ) %>% 
+  filter(countryname=='Romania') %>% 
+  distinct %>% 
+  dplyr::select(partyname, emcs, ees) %>% 
+  as_tibble 
+
+df$ees <- 
+  cell_spec(
+    df$ees,
+    popover = spec_popover(
+      content = c('', 'this should be 1642001', rep('',4)),
+      title = NULL, 
+      position = 'right'
+    )
+  )
+
+
+df %>% 
+  kbl(escape = F) %>% 
+  # kable_paper(full_width=F)
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#65788c", background = "#d2d4d6") %>% 
+  row_spec(2, bold = T, color = "white", background = "#65788c")
+
+```
+
+<br/><br/>
+
+## Slovakia 
+
+The Ordinary people and independent personalities (*Obyčajní ľudia a nezávislé osobnosti*) party EES 
+code is set as missing (-777), but actually the 2019 EES voter study code for this party is 1703620.
+
+```{r Slok2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  left_join(
+    .,
+    tibble(
+      country     = .$country %>% val_labels %>% as.numeric,
+      countryname = .$country %>% val_labels %>% attr(., 'names') %>% trimws
+    ),
+    by = c('country')
+  ) %>% 
+  filter(countryname=='Slovakia') %>% 
+  distinct %>% 
+  dplyr::select(partyname, emcs, ees) %>% 
+  as_tibble 
+
+df$ees <- 
+  cell_spec(
+    df$ees,
+    popover = spec_popover(
+      content = c(rep('',6), 'this should be 1703620', ''),
+      title = NULL, 
+      position = 'right'
+    )
+  )
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#65788c", background = "#d2d4d6") %>% 
+  row_spec(7, bold = T, color = "white", background = "#65788c")
+
+```
+
+<br/><br/>
+
+## Sweden
+
+The *Socialdemokraterna* 2019 EES code (1752321) seems to be wrong. In the EES the code for this party 
+is actually 1752320. 
+
+
+```{r Swe2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  left_join(
+    .,
+    tibble(
+      country     = .$country %>% val_labels %>% as.numeric,
+      countryname = .$country %>% val_labels %>% attr(., 'names') %>% trimws
+    ),
+    by = c('country')
+  ) %>% 
+  filter(countryname=='Sweden') %>% 
+  distinct %>% 
+  dplyr::select(partyname, emcs, ees) %>% 
+  as_tibble 
+
+df$ees <- 
+  cell_spec(
+    df$ees,
+    popover = spec_popover(
+      content = c(rep('',3), 'this should be 1752320', rep('',5)),
+      title = NULL, 
+      position = 'right'
+    )
+  )
+
+
+df %>% 
+  kbl(escape = F) %>% 
+  # kable_paper(full_width=F)
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#65788c", background = "#d2d4d6") %>% 
+  row_spec(4, bold = T, color = "white", background = "#65788c")
+
+```
+
+<br/><br/>
+
+## France 
+
+The *Renaissance* and *Envie d'Europe Ecologique et Sociale* coalitions do not have an EES code. 
+However, in the 2019 EES voter study one party for each coalition is available, namely 
+*La Republique en Marche* (1250438) for the former and the Socialist Party (1250320) for the latter 
+coalition. We could impute the EES codes of these parties. 
+
+
+```{r Fra2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  left_join(
+    .,
+    tibble(
+      country     = .$country %>% val_labels %>% as.numeric,
+      countryname = .$country %>% val_labels %>% attr(., 'names') %>% trimws
+    ),
+    by = c('country')
+  ) %>% 
+  filter(countryname=='France') %>% 
+  distinct %>% 
+  dplyr::select(partyname, emcs, ees) %>% 
+  as_tibble 
+
+df$ees <- 
+  cell_spec(
+    df$ees,
+    popover = spec_popover(
+      content = c(rep('',2), 'this might be 1250320', 'this might be 1250438', rep('',2)),
+      title = NULL, 
+      position = 'right'
+    )
+  )
+
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#65788c", background = "#d2d4d6") %>% 
+  row_spec(3:4, bold = T, color = "white", background = "#8ca89c")
+
+```
+
+<br/><br/>
+
+## Germany
+
+Differently from the past, CDU and CSU in 2019 are computed together, and the code is 41501. 
+Yet, CDU and CSU party codes are respectively 41521 and 41522. According to me, it might be more linear 
+coding the coalition 41523, or alternatively 41521 since the CDU-CSU vote choice in the 2019 EES
+German voter study is 1276521.
+
+```{r Ger2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  left_join(
+    .,
+    tibble(
+      country     = .$country %>% val_labels %>% as.numeric,
+      countryname = .$country %>% val_labels %>% attr(., 'names') %>% trimws
+    ),
+    by = c('country')
+  ) %>% 
+  filter(countryname=='Germany') %>% 
+  distinct %>% 
+  dplyr::select(partyname, emcs, ees) %>% 
+  as_tibble %>% 
+  mutate(
+    ees = case_when(
+      as.numeric(ees) < 0 ~ NA_real_,
+      T       ~ as.numeric(ees)
+    )
+  ) %>% 
+  filter(!is.na(ees))
+
+df$ees <- 
+  cell_spec(
+    df$ees,
+    popover = spec_popover(
+      content = c(rep('',4), 'this might be 41523 or 41521', rep('',2)),
+      title = NULL, 
+      position = 'right'
+    )
+  )
+
+
+df %>% 
+  kbl(escape = F) %>% 
+  # kable_paper(full_width=F)
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#65788c", background = "#d2d4d6") %>% 
+  row_spec(5, bold = T, color = "white", background = "#8ca89c")
+
+```
+
+<br/><br/>
+
+## Greece 
+
+The coalition "Kínima Allagís" does not have a EES code. 
+However, in the 2019 EES voter study one party for this coalition is available, namely the PASOK 
+(1300314). We could impute the EES codes of these parties. 
+
+
+```{r Gre2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  left_join(
+    .,
+    tibble(
+      country     = .$country %>% val_labels %>% as.numeric,
+      countryname = .$country %>% val_labels %>% attr(., 'names') %>% trimws
+    ),
+    by = c('country')
+  ) %>% 
+  filter(countryname=='Greece') %>% 
+  distinct %>% 
+  dplyr::select(partyname, emcs, ees) %>% 
+  as_tibble 
+
+df$ees <- 
+  cell_spec(
+    df$ees,
+    popover = spec_popover(
+      content = c(rep('',2), 'this might be 1300314', rep('',5)),
+      title = NULL, 
+      position = 'right'
+    )
+  )
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#65788c", background = "#d2d4d6") %>% 
+  row_spec(3, bold = T, color = "white", background = "#8ca89c")
+
+```
+
+<br/><br/>
+
+
+# EU Institutions competences {.tabset}
+
+
+According to the EMCS, the level for the following items is only the second one (EU level), and indeed 
+2019 EM data do include only the variables for this level. 
+Nonetheless, despite a similar coding scheme with 2019, the 2014 Euromanifesto data *do include* the 
+other two levels (1 and 3), as shown in the following tabs. 
+Now the question is: Are we going to update the 2014 EM dataset? Or are we going to ignore this 
+inconsistency?
+
+
+<br/><br/>
+
+
+## EP 
+
+
+2014:
+```{r EPcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[3]] %>% 
+  dplyr::select(ends_with(c('306a', '306b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+2019:
+```{r EPcomp2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  dplyr::select(ends_with(c('306a', '306b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+
+## EU Commission 
+
+
+2014:
+```{r EUCOMcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[3]] %>% 
+  dplyr::select(ends_with(c('308a', '308b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+  
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+2019:
+```{r EUCOMcomp2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  dplyr::select(ends_with(c('308a', '308b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left')  %>%  
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+ 
+## European Council 
+
+2014:
+```{r COUNCcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[3]] %>% 
+  dplyr::select(ends_with(c('310a', '310b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+2019:
+```{r COUNCcomp2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  dplyr::select(ends_with(c('310a', '310b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+ 
+## Voting procedures Council 
+
+2014:
+```{r COUNCVOTEcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[3]] %>% 
+  dplyr::select(ends_with(c('3101a', '3101b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+2019:
+```{r COUNCVOTEcomp2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  dplyr::select(ends_with(c('3101a', '3101b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+ 
+## EU court of justice
+
+2014:
+```{r ECJcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- euroman.dfs[[3]] %>% 
+  dplyr::select(ends_with(c('312a', '312b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+2019:
+```{r ECJcomp2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  dplyr::select(ends_with(c('312a', '312b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+ 
+## EU competences in general
+
+2014:
+```{r EUcomp2014, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[3]] %>% 
+  dplyr::select(ends_with(c('314a', '314b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+```
+
+2019:
+```{r EUcomp2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
+
+df <- 
+  euroman.dfs[[4]] %>% 
+  dplyr::select(ends_with(c('314a', '314b'))) %>% 
+  mutate(across(names(.), ~round(.,2))) %>% 
+  as_tibble %>% 
+  head 
+
+df %>% 
+  kbl(escape = F) %>% 
+  kable_styling(full_width=F, position = 'left') %>% 
+  row_spec(1:nrow(df), bold = F, color = "#525252")
+
+```
+
+ 
+
+
+
+# Minor issues {.tabset}
+
+## Country labels
+
+
+The labels for NL and UK differ from those on the EES. We might change them. 
+
+- Euromanifesto: "Czech Republic", "The Netherlands", "UK";
+- EES voter study: "Czech Rep.", "Netherlands", "United Kingdom".
+
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
+
+
+
