@@ -207,6 +207,7 @@ df %>%
 
 The Ordinary people and independent personalities (*Obyčajní ľudia a nezávislé osobnosti*) party EES 
 code is set as missing (-777), but actually the 2019 EES voter study code for this party is 1703620.
+The party code for We are family (*Sme Rodinaa*) is wrong. The correct one is 1703721.
 
 ```{r Slok2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
 
@@ -229,7 +230,7 @@ df$ees <-
   cell_spec(
     df$ees,
     popover = spec_popover(
-      content = c(rep('',6), 'this should be 1703620', ''),
+      content = c(rep('',4),"this should be 1703721", "", 'this should be 1703620', ''),
       title = NULL, 
       position = 'right'
     )
