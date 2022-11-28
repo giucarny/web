@@ -48,12 +48,15 @@ euroman.dfs <- lapply(euroman.fls, read_dta)
 
 <br/><br/>
 
-# Party codes {.tabset}
+# Party codes (EM-EES) {.tabset}
 
+There are some inconsistencies in the party codes when considering the correspondence between EM and EES
+identifiers.  
 Czech Republic, Finland, Romania, Slovakia, and Sweden party codes include inconsistencies 
 to be corrected.  
 France, Germany, and Greece include cases that we might change, but they do not present
 any relevant inconsistency. 
+
 
 <br/>
 
@@ -207,7 +210,7 @@ df %>%
 
 The Ordinary people and independent personalities (*Obyčajní ľudia a nezávislé osobnosti*) party EES 
 code is set as missing (-777), but actually the 2019 EES voter study code for this party is 1703620.
-The party code for We are family (*Sme Rodinaa*) is wrong. The correct one is 1703721.
+The EES party code for We are family (*Sme Rodinaa*) is wrong. The correct one is 1703721.
 
 ```{r Slok2019, echo=FALSE, warning=FALSE, message=FALSE, include=TRUE, eval=TRUE}
 
@@ -240,7 +243,7 @@ df %>%
   kbl(escape = F) %>% 
   kable_styling(full_width=F, position = 'left') %>% 
   row_spec(1:nrow(df), bold = F, color = "#65788c", background = "#e3e3e3") %>% 
-  row_spec(7, bold = T, color = "white", background = "#65788c")
+  row_spec(c(5,7), bold = T, color = "white", background = "#65788c")
 
 ```
 
