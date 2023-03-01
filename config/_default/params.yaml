@@ -20,18 +20,18 @@ twitter: ''
 
 # Contact (edit or remove options as required)
 
-email: giuseppe.carteny AT uni-mannheim.de
-phone: +49-621-181-2879
+email: giuseppe.carteny AT uni-saarland.de
+phone: +49-681-302-2371   
 address:
-  street: A5, 6
-  city: Mannheim
+  # street: A5, 6
+  city: Saarbrücken
   # region: CA
-  postcode: '68161'
+  postcode: '68123'
   country: Germany
   country_code: DE
 coordinates:
-  latitude: '49.48724424148071'
-  longitude: '8.457117482410219'
+  latitude: '42.25423'
+  longitude: '7.04250'
 directions: 
 office_hours:
   - 'Monday to Friday 10:00 to 13:00'

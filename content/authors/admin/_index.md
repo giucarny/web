@@ -19,9 +19,9 @@ interests:
 - Data Analysis
 - Quantitative Methods
 organizations:
-- name: University of Mannheim
-  url: https://www.uni-mannheim.de/
-role: Postdoctoral Fellow
+- name: Saarland University
+  url: https://www.uni-saarland.de/
+role: Postdoctoral Researcher
 social:
 - icon: envelope
   icon_pack: fas
@@ -45,7 +45,7 @@ superuser: true
 title: Giuseppe Carteny
 ---
 
-Hi! I am a political science researcher at the [Mannheim Centre for European Social Research (MZES)](https://www.mzes.uni-mannheim.de/d7/en) focusing on the empirical study of political attitudes and electoral behaviour in Europe and East Asia. 
+Hi! I am a political science researcher at the [Department of European Social Research of Saarland University](https://www.uni-saarland.de/fachrichtung/europaforschung.html) focusing on the empirical study of political attitudes, electoral behaviour, and party competition in Europe and East Asia. 
 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/G.Carteny_CV.pdf" "newtab" >}}CV{{< /staticref >}}.
